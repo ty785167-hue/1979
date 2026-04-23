@@ -1,138 +1,122 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1979年生まれ診断クイズ</title>
+    <style>
+        body { font-family: 'Hiragino Kaku Gothic ProN', sans-serif; background-color: #2c3e50; color: #ecf0f1; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .quiz-container { background: #34495e; padding: 30px; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); max-width: 500px; width: 90%; }
+        h1 { font-size: 1.5rem; text-align: center; color: #f1c40f; border-bottom: 2px solid #f1c40f; padding-bottom: 10px; }
+        .question { font-size: 1.2rem; margin: 25px 0; line-height: 1.6; min-height: 3em; }
+        .options { display: flex; flex-direction: column; gap: 12px; }
+        button { padding: 15px; border: none; border-radius: 10px; background: #ecf0f1; color: #2c3e50; cursor: pointer; transition: 0.2s; font-size: 1rem; font-weight: bold; text-align: left; }
+        button:hover { background-color: #f1c40f; transform: scale(1.02); }
+        #result-text { margin-top: 20px; font-weight: bold; text-align: center; font-size: 1.3rem; min-height: 1.5em; }
+        #next-btn { margin-top: 20px; width: 100%; background: #e67e22; color: white; border: none; display: none; text-align: center; padding: 15px; border-radius: 10px; font-size: 1.1rem; cursor: pointer; }
+        .score-msg { line-height: 1.8; text-align: center; }
+        .score-val { font-size: 2.5rem; color: #f1c40f; display: block; margin: 10px 0; }
+    </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="ja"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;1979年生まれ診断クイズ&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body { font-family: 'Hiragino Kaku Gothic ProN', sans-serif; background-color: #2c3e50; color: #ecf0f1; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.quiz-container { background: #34495e; padding: 30px; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); max-width: 500px; width: 90%; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>h1 { font-size: 1.5rem; text-align: center; color: #f1c40f; border-bottom: 2px solid #f1c40f; padding-bottom: 10px; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.question { font-size: 1.2rem; margin: 25px 0; line-height: 1.6; min-height: 3em; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.options { display: flex; flex-direction: column; gap: 12px; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>button { padding: 15px; border: none; border-radius: 10px; background: #ecf0f1; color: #2c3e50; cursor: pointer; transition: 0.2s; font-size: 1rem; font-weight: bold; text-align: left; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>button:hover { background-color: #f1c40f; transform: scale(1.02); }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>#result-text { margin-top: 20px; font-weight: bold; text-align: center; font-size: 1.3rem; min-height: 1.5em; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>#next-btn { margin-top: 20px; width: 100%; background: #e67e22; color: white; border: none; display: none; text-align: center; padding: 15px; border-radius: 10px; font-size: 1.1rem; cursor: pointer; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.score-msg { line-height: 1.8; text-align: center; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.score-val { font-size: 2.5rem; color: #f1c40f; display: block; margin: 10px 0; }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;div class="quiz-container" id="quiz"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;🔥 1979年生まれ・時事クイズ&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="question-area"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="question" id="question-text"&gt;読み込み中...&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="options" id="options-area"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="result-text"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button id="next-btn" onclick="loadNextQuestion()"&gt;次の問題へ&lt;/button&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const quizData = [</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ q: "1979年（誕生年）に発売され、世界中に音楽を持ち歩く文化を作ったのは？", a: ["iPod", "ウォークマン", "ディスクマン", "ラジカセ"], correct: 1 },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ q: "1983年（4歳）、放課後の過ごし方を一変させた「ファミコン」の正式名称は？", a: ["ファミリーコンピューター", "ホームコンピューター", "ゲームボーイ", "スーパーファミコン"], correct: 0 },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ q: "1989年（10歳）、ベルリンの壁が崩壊。この時の日本の年号は？", a: ["昭和", "平成", "令和", "大正"], correct: 1 },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ q: "1993年（14歳）、ドーハの悲劇で出場を逃したスポーツの大会は？", a: ["プロ野球", "ラグビーW杯", "サッカーW杯", "オリンピック"], correct: 2 },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ q: "1995年（16歳）、女子高生を中心に大流行した足元のアイテムは？", a: ["ハイソックス", "ルーズソックス", "タイツ", "ニーハイ"], correct: 1 },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ q: "1996年（17歳）、エサをあげないと死んでしまう卵型の携帯ゲームは？", a: ["デジモン", "たまごっち", "ピカチュウ", "テトリス"], correct: 1 },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ q: "1997年（18歳）、日本中がレオナルド・ディカプリオに熱狂した映画は？", a: ["タイタニック", "アルマゲドン", "スターウォーズ", "アバター"], correct: 0 },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ q: "1979年に放送開始され、今も続くリアルロボットアニメの金字塔は？", a: ["マジンガーZ", "エヴァンゲリオン", "機動戦士ガンダム", "マクロス"], correct: 2 },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ q: "中学・高校時代、友達との連絡手段として普及した「数字」でメッセージを送る機械は？", a: ["ポケベル", "ピッチ(PHS)", "スマホ", "糸電話"], correct: 0 },</p>
-<p class="p1"><span class="Apple-converted-space">        </span>{ q: "1999年（20歳）、世間を騒がせたコンピューターの誤作動懸念は何問題？", a: ["2000年問題", "ノストラダムス問題", "インターネット問題", "消費税問題"], correct: 0 }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>];</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>let currentIdx = 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>let score = 0;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function showQuestion() {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const qData = quizData[currentIdx];</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("question-text").innerText = `Q${currentIdx + 1}. ${qData.q}`;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const optionsArea = document.getElementById("options-area");</p>
-<p class="p1"><span class="Apple-converted-space">        </span>optionsArea.innerHTML = "";</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("result-text").innerText = "";</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("next-btn").style.display = "none";</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>qData.a.forEach((ans, i) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const btn = document.createElement("button");</p>
-<p class="p1"><span class="Apple-converted-space">            </span>btn.innerText = ans;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>btn.onclick = () =&gt; checkAnswer(i);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>optionsArea.appendChild(btn);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function checkAnswer(idx) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const qData = quizData[currentIdx];</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const resArea = document.getElementById("result-text");</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const btns = document.querySelectorAll("#options-area button");</p>
-<p class="p1"><span class="Apple-converted-space">        </span>btns.forEach(b =&gt; b.disabled = true);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (idx === qData.correct) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>resArea.innerText = "⭕ 正解！懐かしいね！";</p>
-<p class="p1"><span class="Apple-converted-space">            </span>resArea.style.color = "#2ecc71";</p>
-<p class="p1"><span class="Apple-converted-space">            </span>score++;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>resArea.innerText = "❌ 残念！正解は: " + qData.a[qData.correct];</p>
-<p class="p1"><span class="Apple-converted-space">            </span>resArea.style.color = "#e74c3c";</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("next-btn").style.display = "block";</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (currentIdx === quizData.length - 1) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById("next-btn").innerText = "結果発表へ";</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function loadNextQuestion() {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>currentIdx++;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (currentIdx &lt; quizData.length) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>showQuestion();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>showFinalResult();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>function showFinalResult() {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const total = quizData.length;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const percent = (score / total) * 100;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>let comment = "";</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>if (percent &gt;= 80) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>comment = "完璧！あなたは伝説の79年世代です！🏆合格！";</p>
-<p class="p1"><span class="Apple-converted-space">        </span>} else if (percent &gt;= 40) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>comment = "うーん、惜しい！&lt;br&gt;本当にあなたは79年生まれ？！🤔";</p>
-<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>comment = "記憶が…笑&lt;br&gt;ちゃんとニュースを見ましょう^^";</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("quiz").innerHTML = `</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;結果発表&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="score-msg"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>あなたの正解数は...</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="score-val"&gt;${score} / ${total}&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p style="font-size:1.2rem; font-weight:bold;"&gt;${comment}&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="location.reload()" style="width:100%; background:#f1c40f; color:#2c3e50; border:none; margin-top:20px; padding:15px; border-radius:10px; cursor:pointer; font-weight:bold; text-align:center;"&gt;もう一度挑戦する&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>`;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>showQuestion();</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+
+<div class="quiz-container" id="quiz">
+    <h1>🔥 1979年生まれ・時事クイズ</h1>
+    <div id="question-area">
+        <p class="question" id="question-text">読み込み中...</p>
+        <div class="options" id="options-area"></div>
+    </div>
+    <div id="result-text"></div>
+    <button id="next-btn" onclick="loadNextQuestion()">次の問題へ</button>
+</div>
+
+<script>
+    const quizData = [
+        { q: "1979年（誕生年）に発売され、世界中に音楽を持ち歩く文化を作ったのは？", a: ["iPod", "ウォークマン", "ディスクマン", "ラジカセ"], correct: 1 },
+        { q: "1983年（4歳）、放課後の過ごし方を一変させた「ファミコン」の正式名称は？", a: ["ファミリーコンピューター", "ホームコンピューター", "ゲームボーイ", "スーパーファミコン"], correct: 0 },
+        { q: "1989年（10歳）、ベルリンの壁が崩壊。この時の日本の年号は？", a: ["昭和", "平成", "令和", "大正"], correct: 1 },
+        { q: "1993年（14歳）、ドーハの悲劇で出場を逃したスポーツの大会は？", a: ["プロ野球", "ラグビーW杯", "サッカーW杯", "オリンピック"], correct: 2 },
+        { q: "1995年（16歳）、女子高生を中心に大流行した足元のアイテムは？", a: ["ハイソックス", "ルーズソックス", "タイツ", "ニーハイ"], correct: 1 },
+        { q: "1996年（17歳）、エサをあげないと死んでしまう卵型の携帯ゲームは？", a: ["デジモン", "たまごっち", "ピカチュウ", "テトリス"], correct: 1 },
+        { q: "1997年（18歳）、日本中がレオナルド・ディカプリオに熱狂した映画は？", a: ["タイタニック", "アルマゲドン", "スターウォーズ", "アバター"], correct: 0 },
+        { q: "1979年に放送開始され、今も続くリアルロボットアニメの金字塔は？", a: ["マジンガーZ", "エヴァンゲリオン", "機動戦士ガンダム", "マクロス"], correct: 2 },
+        { q: "中学・高校時代、友達との連絡手段として普及した「数字」でメッセージを送る機械は？", a: ["ポケベル", "ピッチ(PHS)", "スマホ", "糸電話"], correct: 0 },
+        { q: "1999年（20歳）、世間を騒がせたコンピューターの誤作動懸念は何問題？", a: ["2000年問題", "ノストラダムス問題", "インターネット問題", "消費税問題"], correct: 0 }
+    ];
+
+    let currentIdx = 0;
+    let score = 0;
+
+    function showQuestion() {
+        const qData = quizData[currentIdx];
+        document.getElementById("question-text").innerText = `Q${currentIdx + 1}. ${qData.q}`;
+        const optionsArea = document.getElementById("options-area");
+        optionsArea.innerHTML = "";
+        document.getElementById("result-text").innerText = "";
+        document.getElementById("next-btn").style.display = "none";
+
+        qData.a.forEach((ans, i) => {
+            const btn = document.createElement("button");
+            btn.innerText = ans;
+            btn.onclick = () => checkAnswer(i);
+            optionsArea.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(idx) {
+        const qData = quizData[currentIdx];
+        const resArea = document.getElementById("result-text");
+        const btns = document.querySelectorAll("#options-area button");
+        btns.forEach(b => b.disabled = true);
+
+        if (idx === qData.correct) {
+            resArea.innerText = "⭕ 正解！懐かしいね！";
+            resArea.style.color = "#2ecc71";
+            score++;
+        } else {
+            resArea.innerText = "❌ 残念！正解は: " + qData.a[qData.correct];
+            resArea.style.color = "#e74c3c";
+        }
+        document.getElementById("next-btn").style.display = "block";
+        if (currentIdx === quizData.length - 1) {
+            document.getElementById("next-btn").innerText = "結果発表へ";
+        }
+    }
+
+    function loadNextQuestion() {
+        currentIdx++;
+        if (currentIdx < quizData.length) {
+            showQuestion();
+        } else {
+            showFinalResult();
+        }
+    }
+
+    function showFinalResult() {
+        const total = quizData.length;
+        const percent = (score / total) * 100;
+        let comment = "";
+
+        if (percent >= 80) {
+            comment = "完璧！あなたは伝説の79年世代です！🏆合格！";
+        } else if (percent >= 40) {
+            comment = "うーん、惜しい！<br>本当にあなたは79年生まれ？！🤔";
+        } else {
+            comment = "記憶が…笑<br>ちゃんとニュースを見ましょう^^";
+        }
+
+        document.getElementById("quiz").innerHTML = `
+            <h1>結果発表</h1>
+            <div class="score-msg">
+                あなたの正解数は...
+                <span class="score-val">${score} / ${total}</span>
+                <p style="font-size:1.2rem; font-weight:bold;">${comment}</p>
+            </div>
+            <button onclick="location.reload()" style="width:100%; background:#f1c40f; color:#2c3e50; border:none; margin-top:20px; padding:15px; border-radius:10px; cursor:pointer; font-weight:bold; text-align:center;">もう一度挑戦する</button>
+        `;
+    }
+
+    showQuestion();
+</script>
 </body>
 </html>
